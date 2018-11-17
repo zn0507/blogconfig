@@ -1,0 +1,12 @@
+eureka:
+  instance:
+    hostname: sdpeer2
+    prefer-ip-address: true
+    ip-address: 127.0.0.1
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: http://sdpeer1:8001/eureka/,http://sdpeer3:8003/eureka/,http://sdpeer4:8004/eureka/,http://sdpeer5:8005/eureka/
+server:
+  port: 8002

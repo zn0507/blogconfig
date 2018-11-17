@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: blog-base
+  cloud:
+    config:
+      label: master
+      profile: dev
+      #      discovery:
+      #        enabled: true
+      #        service-id: blog-config-server
+      uri: http://localhost:8020/

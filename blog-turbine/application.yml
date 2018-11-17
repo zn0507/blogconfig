@@ -1,0 +1,31 @@
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://127.0.0.1:5432/blog
+    username: postgres
+    password: root
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    database-platform: org.hibernate.dialect.PostgreSQL9Dialect
+    properties:
+      hibernate:
+        temp:
+          use_jdbc_metadata_defaults: false
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://sdpeer2:8002/eureka/
+
+server:
+  port: 8050
+
+management:
+  server:
+    port: 8051
+turbine:
+  app-config: blog-article-service
+  combine-host-port: true
+  cluster-name-expression: "default"

@@ -1,0 +1,26 @@
+server:
+  port: 8001
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8000/eureka/
+
+spring:
+  application:
+    name: blog-gateway
+  cloud:
+    gateway:
+      routes:
+      - id: blog-article-service
+        uri: lb://blog-article-service
+        predicates:
+        - Path=/api/articleserver
+        filters:
+        - StripPrefix=1
+      - id: blog-comment-service
+        uri: lb://blog-comment-service
+        predicates:
+        - Path=/api/commentserver
+        filters:
+        - StripPrefix=1
