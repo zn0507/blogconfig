@@ -21,4 +21,4 @@ eureka:
 server:
   port: 8011
 
-hello: 2131231
+hello: hello2131231
