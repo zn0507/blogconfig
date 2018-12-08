@@ -19,6 +19,6 @@ eureka:
       defaultZone: http://127.0.0.1:8002/eureka/
 
 server:
-  port: 8011
+  port: 8030
 
 hello: hello2131231
