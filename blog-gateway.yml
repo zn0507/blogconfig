@@ -1,10 +1,10 @@
 server:
-  port: 8001
+  port: 8000
 
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://localhost:8000/eureka/
+      defaultZone: http://localhost:8002/eureka/
 
 spring:
   application:
@@ -15,12 +15,18 @@ spring:
       - id: blog-article-service
         uri: lb://blog-article-service
         predicates:
-        - Path=/api/articleserver
+        - Path=/api/articleservice/**
         filters:
-        - StripPrefix=1
+        - StripPrefix=2
       - id: blog-comment-service
         uri: lb://blog-comment-service
         predicates:
-        - Path=/api/commentserver
+        - Path=/api/commentservice/**
         filters:
-        - StripPrefix=1
+        - StripPrefix=2
+#      - id: blog-graphql-service
+#          uri: lb://blog-graphql-service
+#          predicates:
+#          - Path=/api/graphqlservice
+#          filters:
+#          - StripPrefix=1 去除前缀长度
