@@ -1,6 +1,7 @@
 app:
     article:
         number: 1
+        hello: hello scca
 eureka:
     client:
         serviceUrl:
