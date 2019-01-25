@@ -1,9 +1,10 @@
+app:
+    article:
+        number: 1
 eureka:
     client:
         serviceUrl:
             defaultZone: http://127.0.0.1:8002/eureka/
-hello:
-    test: hello scca
 server:
     port: 8012
 spring:
