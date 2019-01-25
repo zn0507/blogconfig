@@ -1,0 +1,46 @@
+server:
+  port: 8000
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8002/eureka/
+
+spring:
+  application:
+    name: blog-gateway
+  cloud:
+    gateway:
+      routes:
+        - id: blog-article-service
+          uri: lb://blog-article-service
+          predicates:
+            - Path=/api/articleservice/**
+          filters:
+            - StripPrefix=2
+        - id: blog-comment-service
+          uri: lb://blog-comment-service
+          predicates:
+            - Path=/api/commentservice/**
+          filters:
+            - StripPrefix=2
+  #      - id: blog-graphql-service
+  #          uri: lb://blog-graphql-service
+  #          predicates:
+  #          - Path=/api/graphqlservice
+  #          filters:
+  #          - StripPrefix=1 去除前缀长度
+  sleuth:
+    sampler:
+      probability: 1
+  zipkin:
+    base-url: http://127.0.0.1:9000
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: httptrace
+
+logging:
+  config: classpath:log4j2.yml
