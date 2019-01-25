@@ -2,7 +2,7 @@
     endpoints:
         web:
             exposure:
-                include: *
+                include: actuator
 app:
     article:
         number: 1
